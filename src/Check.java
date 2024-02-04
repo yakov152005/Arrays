@@ -1,34 +1,21 @@
 import java.util.Scanner;
 
 public class Check {
+    //בדיקת ממוצע
     public static void main(String[] args){
-        // int [] gradesArray = {32, 54, 34};
-        //double average = calculateAverage(gradesArray);
-        // System.out.println("This average is: " + average);
-        gradeArray();
 
-    }
-    public static int getInput (){
-        Scanner s =new Scanner(System.in);
-        return  s.nextInt();
-    }
+        Scanner s = new Scanner(System.in);
+        int num, sum=0, newNum=0, avg=0;
 
-    public static double calculateAverage(int [] grades){
-        int sum = 0;
-        for (int i = 0 ; i<grades.length; i++){
-            sum += grades[i];
-        }
-        return (double) sum/grades.length;
+        do {
+            System.out.println("Enter a numbers for avg: -1 for exit");
+            num = s.nextInt();
+            if (num != -1) {
+                sum++;
+                newNum += num;
+            }
+        }while (num != -1);
+        avg = newNum/sum;
+        System.out.println("Your avg is: " + avg);
     }
-    public static void gradeArray (){
-        int arraySize = 60;
-        int [] gradesArray = new int[arraySize];
-        for (int i = 0 ; i <arraySize; i++) {
-            gradesArray[i] = i;
-        }
-            double average = calculateAverage(gradesArray);
-            System.out.println("This average is: " + average);
-        }
-
-    }
-
+}
