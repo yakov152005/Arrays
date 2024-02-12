@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ExArrays {
 	public static void main(String[] args) {
-
+		
 	}
 	public static int getInput() {
 		Scanner s = new Scanner(System.in);
@@ -78,6 +78,21 @@ public class ExArrays {
 			}
 		}return maxNum;
 	}
+	public static int numberAppear (int[] arr, int num){
+		int maxIndex=0;
+		for (int i = 0; i < arr.length; i++){
+			if (arr[i] == num) {
+				maxIndex++;
+			}
+		}return maxIndex;
+	}
+	public static void removeDigitInArray(int[] arr, int num){
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] !=num){
+				System.out.print(arr[i] + " ");
+			}
+		}
+	}
 	public static void Ex1And2() {
 		int size;
 		System.out.print("Enter a size  for arr: ");
@@ -136,6 +151,27 @@ public class ExArrays {
 		createRandomArray(arr, 100+1);
 		printArray(arr);
 		printHighestNumberInArray(arr);
+	}
+	public static void Ex10(){
+		int size;
+		System.out.print("Enter a size  for arr: ");
+		size = getInput();
+		int [] arr = createArray(size);
+		System.out.print("Enter a addition number: ");
+		int number =getInput();
+		int result = numberAppear(arr, number);
+		System.out.println("The number " + number + " appears " + result + " in the array.");
+	}
+	public static void Ex11(){
+		int size;
+		System.out.print("Enter a size  for arr: ");
+		size = getInput();
+		int [] arr = createArray(size);
+		System.out.print("Enter a addition number: ");
+		int number =getInput();
+		removeDigitInArray(arr, number);
+
+
 	}
 
 }
