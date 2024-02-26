@@ -3,14 +3,12 @@ import java.util.Scanner;
 
 public class ExArrays {
 	public static void main(String[] args) {
-Ex16();
+		//Enter Ex do you want for example ---> Ex1();
 	}
-
 	public static int getInput() {
 		Scanner s = new Scanner(System.in);
 		return s.nextInt();
 	}
-
 	public static int[] createArray(int size) {
 		int[] arr = new int[size];
 		System.out.println("Enter " + arr.length + " numbers:");
@@ -19,7 +17,6 @@ Ex16();
 		}
 		return arr;
 	}
-
 	public static void printArrayForEx1(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
@@ -28,26 +25,22 @@ Ex16();
 			}
 		}
 	}
-
 	public static void printArray(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
 		}
 	}
-
 	public static void printReversNumberArray(int[] arr) {
 		for (int i = arr.length - 1; i >= 0; i--) {
 			System.out.print(arr[i] + " ");
 		}
 
 	}
-
 	public static void printDoubleArray(double[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + " ");
 		}
 	}
-
 	public static double[] createDoubleArray(int size, double value) {
 		double[] arr = new double[size];
 		for (int i = 0; i < size; i++) {
@@ -55,14 +48,12 @@ Ex16();
 		}
 		return arr;
 	}
-
 	public static void createRandomArray(int[] arr, int number) {
 		Random r = new Random();
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = r.nextInt(number * 10);
 		}
 	}
-
 	public static int[] createAndFillRandomArray(int size) {
 		Random r = new Random();
 		int[] array = new int[size];
@@ -71,7 +62,6 @@ Ex16();
 		}
 		return array;
 	}
-
 	public static int[] consecutiveNumbers(int a, int b) {
 		int[] arr = new int[a];
 		for (int i = 0; i < a; i++) {
@@ -79,7 +69,6 @@ Ex16();
 		}
 		return arr;
 	}
-
 	public static int sumArray(int[] arr) {
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++) {
@@ -87,7 +76,6 @@ Ex16();
 		}
 		return sum;
 	}
-
 	public static void printHighestNumberInArray(int[] arr) {
 		int highNum = arr[0];
 		for (int i = 1; i < arr.length; i++) {
@@ -97,7 +85,6 @@ Ex16();
 		}
 		System.out.println("\nThe Highest number in the array is: " + highNum);
 	}
-
 	public static int ReturnHighestNumberInArray(int[] arr) {
 		int maxNum = arr[0];
 		for (int i = 1; i < arr.length; i++) {
@@ -107,7 +94,6 @@ Ex16();
 		}
 		return maxNum;
 	}
-
 	public static int numberAppear(int[] arr, int num) {
 		int maxIndex = 0;
 		for (int i = 0; i < arr.length; i++) {
@@ -117,7 +103,6 @@ Ex16();
 		}
 		return maxIndex;
 	}
-
 	public static void removeDigitInArray(int[] arr, int num) {
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] != num) {
@@ -125,7 +110,6 @@ Ex16();
 			}
 		}
 	}
-
 	public static int theSumOfLargestArray(int[] arr1, int[] arr2) {
 		int sumForFirstArray = 0;
 		int sumForSecondArray = 0;
@@ -142,7 +126,37 @@ Ex16();
 		} else
 			return 0;
 	}
+	public static int[] removeMostCommon(int[] array) {
+		int[] frequency = new int[array.length * 10 + 1];
+		for (int num : array) {
+			frequency[num]++;
+		}
 
+		int maxFreq = 0;
+		int mostCommon = 0;
+		for (int i = 1; i < frequency.length; i++) {
+			if (frequency[i] > maxFreq) {
+				maxFreq = frequency[i];
+				mostCommon = i;
+			}
+		}
+
+		int count = 0;
+		for (int num : array) {
+			if (num == mostCommon) {
+				count++;
+			}
+		}
+
+		int[] newArray = new int[array.length - count];
+		int index = 0;
+		for (int num : array) {
+			if (num != mostCommon) {
+				newArray[index++] = num;
+			}
+		}
+		return newArray;
+	}
 	public static int[] newArrOnNumber(int number) {
 		int[] arr = new int[3];
 		for (int i = 0; i < arr.length; i++) {
@@ -151,7 +165,45 @@ Ex16();
 		}
 		return arr;
 	}
-
+	public static boolean itsPalindromeArr (int[] arr){
+		boolean res = true;
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = arr.length -1 ; j >0 ; j--) {
+				if (arr[i] != arr[j]) {
+					res = false;
+				}
+				i++;
+			}
+		}return res;
+	}
+	public static boolean itsPalindromeNumber(int number) {
+		int originalNum = number;
+		int reversNum = 0;
+		boolean temp = false;
+		if (number > 10000) {
+			while (number > 0) {
+				int digit = number % 10;
+				reversNum = reversNum * 10 + digit;
+				number /= 10;
+			}
+			if (originalNum == reversNum) {
+				temp = true;
+			}
+		} else if (number / 100 == originalNum % 10 ||number / 10 == originalNum % 10) {
+			temp = true;
+		}
+		return temp;
+	}
+	public static int countItsPalindromeNumber (int [] arr){
+		int temp = 0;
+		int counter=0;
+		for (int i = 0; i < arr.length; i++) {
+			temp = arr[i];
+			if (itsPalindromeNumber(temp)){
+				counter++;
+			}
+		}return counter;
+	}
 	public static void Ex1And2() {
 		int size;
 		System.out.print("Enter a size  for arr: ");
@@ -241,19 +293,21 @@ Ex16();
 
 
 	}
-
 	public static void Ex12() {
 		int size;
+
 		System.out.println("Enter size for array: ");
 		size = getInput();
+
 		int[] arr = createAndFillRandomArray(size);
 		System.out.print("The original array is: ");
 		printArray(arr);
-		System.out.println();
-		System.out.print("The new arr without the most common: ");
-//לא סיימתי
-	}
 
+		System.out.println();
+		int[] newArray = removeMostCommon(arr);
+		System.out.print("The new arr without the most common: ");
+		printArray(newArray);
+	}
 	public static void Ex13() {
 		System.out.println("Enter size for array One: ");
 		int size1 = getInput();
@@ -268,42 +322,32 @@ Ex16();
 		printArray(arr2);
 		System.out.println();
 		int result = theSumOfLargestArray(arr1, arr2);
-		System.out.println("1 - The sum of first array greater\n" +
-				"2 - The sum of second array greater,\n" +
-				"0 - The arrays is equals.  ");
+		System.out.println("""
+				1 - The sum of first array greater
+				2 - The sum of second array greater,
+				0 - The arrays is equals. \s""");
 		System.out.println("The result is: " + result);
 	}
-
 	public static void Ex14() {
 		int number = 244;
 		int[] newArr = newArrOnNumber(number);
 		printReversNumberArray(newArr);
 
-
 	}
-
+	public static void Ex15(){
+		int[] arr = createArray(5);
+		System.out.println(itsPalindromeArr(arr));
+	}
 	public static void Ex16(){
 		System.out.println("Enter number for check if a palindrome: ");
 		int number =getInput();
 		System.out.println(itsPalindromeNumber(number));
 	}
-	public static boolean itsPalindromeNumber(int number) {
-		int originalNum = number;
-		int reversNum = 0;
-		boolean temp = false;
-		if (number > 10000) {
-			while (number > 0) {
-				int digit = number % 10;
-				reversNum = reversNum * 10 + digit;
-				number /= 10;
-			}
-			if (originalNum == reversNum) {
-				temp = true;
-			}
-		} else if (number / 100 == originalNum % 10 ||number / 10 == originalNum % 10) {
-			temp = true;
-		}
-		return temp;
+	public static void Ex17(){
+		int [] arr = createArray(5);
+		int result = countItsPalindromeNumber(arr);
+		System.out.println("There are |" + result + "| numbers in the array that are palindromes.");
 	}
+
 }
 
